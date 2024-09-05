@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+  <h1>Rock, Paper, Scissors</h1>
+  <script>
+
+
+ function getComputerChoice(){
+  const values = ['rock', 'paper', 'scissors']
+  let index = Math.floor(Math.random() * 3) 
+  
+  let computerChoice = values[index];
+  console.log(`Computer: ${computerChoice}`);
+  return computerChoice;
+ }
+
+
+function getHumanChoice(){
+  let humanChoice = prompt('Please enter your choice: rock, paper or scissors');
+  humanChoice.toLowerCase();
+
+  if(humanChoice === 'rock'){
+    console.log('Human: rock');
+  } else if( humanChoice === 'paper'){
+    console.log('Human: paper');
+  } else if( humanChoice === 'scissors'){
+    console.log('Human: scissors');
+  } else {
+    alert('Please enter a valid value')
+  }
+
+  return humanChoice
+}
+
+
+function playGame(){
+  let humanScore = 0;
+  let computerScore = 0;
+
+  for(let i = 0; i < 5; i++){
+    playRound(getHumanChoice(), getComputerChoice());
+  }
+
+  function playRound(humanChoice, computerChoice){
+
+    if(humanChoice === 'rock' && computerChoice === 'rock'){
+      console.log('Draw');
+    } else if(humanChoice === 'rock' && computerChoice === 'paper'){
+      console.log('You lose. Paper beats rock!');
+      computerScore += 1
+      console.log(`Computer score: ${computerScore} / Human Score: ${humanScore}`);
+      return computerScore;
+    } else if(humanChoice === 'rock' && computerChoice === 'scissors'){
+      console.log('You win. Rock beats scissors!');
+      humanScore += 1
+      console.log(`Computer score: ${computerScore} / Human Score: ${humanScore}`);
+      return humanScore
+    } else if(humanChoice === 'paper' && computerChoice === 'paper'){
+      console.log('Draw');
+    } else if(humanChoice === 'paper' && computerChoice === 'scissors'){
+      console.log('You lose. Scissors beat paper!');
+      computerScore += 1
+      console.log(`Computer score: ${computerScore} / Human Score: ${humanScore}`);
+      return computerScore;
+    } else if(humanChoice === 'paper' && computerChoice === 'rock'){
+      console.log('You win. Paper beats rock!');
+      humanScore += 1
+      console.log(`Computer score: ${computerScore} / Human Score: ${humanScore}`);
+      return humanScore;
+    } else if(humanChoice === 'scissors' && computerChoice === 'scissors') {
+      console.log('Draw');
+      console.log(`Computer score: ${computerScore} / Human Score: ${humanScore}`);
+    } else if(humanChoice === 'scissors' && computerChoice === 'rock'){
+      console.log('You lose. Rock beats scissors!');
+      computerScore += 1
+      console.log(`Computer score: ${computerScore} / Human Score: ${humanScore}`);
+      return computerScore
+    } else if(humanChoice === 'scissors' && computerChoice === 'paper'){
+      console.log('You win. Scissors beat paper!');
+      humanScore += 1
+      console.log(`Computer score: ${computerScore} / Human Score: ${humanScore}`);
+      return humanScore;
+    } else{
+      console.log('Bauljam i carlijam');
+    }
+}
+
+  if(humanScore > computerScore) {
+    alert('You win')
+  } else if(humanScore < computerScore) {
+    alert('You lose. Computer wins this one')
+  }else{
+    alert("It's a draw")
+  }
+}
+
+// pozoves malo moga
+playGame()
+
+
+  </script>
+</body>
+</html>
